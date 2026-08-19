@@ -3,7 +3,6 @@ import {createRoot} from 'react-dom/client';
 import App from './App.jsx';
 import Signup from './Signup.jsx';
 import './styles.css';
-import './batchEditEnhancer.js';
 
 const API=(import.meta.env.VITE_API_URL||'http://localhost:5000/api').replace(/\/$/,'');
 
