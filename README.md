@@ -2,15 +2,21 @@
 
 A private teacher management dashboard for batches, students, attendance, class history, topics, homework and reports.
 
+## 🚀 Live Demo
+
+**[Open RibhuTrack](https://ribhu-track.vercel.app/)**
+
+> Live application: https://ribhu-track.vercel.app/
+
 ## Stack
 - Frontend: React + Vite + Tailwind-style CSS
 - Backend: Node.js + Express
 - Database: PostgreSQL
 - Authentication: JWT + bcrypt
-- Hosting: GitHub Pages/Vercel for frontend, Render/Railway for backend
+- Hosting: Vercel for frontend, Render/Railway for backend
 
 ## Features
-- Teacher login
+- Teacher login and signup
 - Dashboard with class and attendance summary
 - Batch CRUD
 - Student CRUD with join date and status
@@ -45,3 +51,6 @@ Create a PostgreSQL database and set `DATABASE_URL` in `backend/.env`. The API i
 
 ## Deployment
 Keep secrets only in the hosting provider's environment variables. Never commit `.env` files or database credentials.
+
+## Live URL
+https://ribhu-track.vercel.app/
