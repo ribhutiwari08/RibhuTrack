@@ -14,13 +14,10 @@ export default function Signup({onSignIn,onRegistered}){
   const [busy,setBusy]=useState(false);
   const [error,setError]=useState('');
   const [success,setSuccess]=useState('');
-
   const update=(key,value)=>setForm(prev=>({...prev,[key]:value}));
 
   async function submit(e){
-    e.preventDefault();
-    setError('');
-    setSuccess('');
+    e.preventDefault(); setError(''); setSuccess('');
     if(form.password!==form.confirm){setError('Passwords do not match');return;}
     if(form.password.length<6){setError('Password must be at least 6 characters');return;}
     setBusy(true);
@@ -31,8 +28,7 @@ export default function Signup({onSignIn,onRegistered}){
       localStorage.setItem('rt_teacher',JSON.stringify(login.teacher));
       setSuccess('Account created successfully. Opening RibhuTrack…');
       setTimeout(()=>onRegistered(login.teacher),400);
-    }catch(err){setError(err.message)}
-    finally{setBusy(false)}
+    }catch(err){setError(err.message)} finally{setBusy(false)}
   }
 
   return <div className="login-page">
@@ -47,10 +43,10 @@ export default function Signup({onSignIn,onRegistered}){
         <label>Password<input type="password" value={form.password} onChange={e=>update('password',e.target.value)} placeholder="Minimum 6 characters" minLength="6" required/></label>
         <label>Confirm password<input type="password" value={form.confirm} onChange={e=>update('confirm',e.target.value)} placeholder="Re-enter your password" required/></label>
         {error&&<div className="error">{error}</div>}
-        {success&&<div className="success">{success}</div>}
+        {success&&<div style={{background:'#e8f8ee',color:'#24864d',borderRadius:8,padding:10,fontSize:12}}>{success}</div>}
         <button className="primary full" disabled={busy}>{busy?'Creating account…':'Create account'}</button>
       </form>
-      <div className="login-tip">Already have an account? <button className="auth-link" type="button" onClick={onSignIn}>Sign in</button></div>
+      <div className="login-tip">Already have an account? <button type="button" onClick={onSignIn} style={{border:0,background:'transparent',color:'#6855df',fontWeight:700,cursor:'pointer',padding:0}}>Sign in</button></div>
     </div>
   </div>;
 }
