@@ -15,9 +15,16 @@ function AuthGate(){
   useEffect(()=>{
     const checkSession=()=>{
       const token=localStorage.getItem('rt_token');
-      if(!token){localStorage.removeItem('rt_login_at');setMode('signup');return}
+      // Do not force Signup while the user is on the Login screen.
+      if(!token){
+        localStorage.removeItem('rt_login_at');
+        return;
+      }
       let started=Number(localStorage.getItem('rt_login_at'));
-      if(!started||Number.isNaN(started)){started=Date.now();localStorage.setItem('rt_login_at',String(started))}
+      if(!started||Number.isNaN(started)){
+        started=Date.now();
+        localStorage.setItem('rt_login_at',String(started));
+      }
       if(Date.now()-started>=SESSION_LIMIT){
         localStorage.removeItem('rt_token');
         localStorage.removeItem('rt_teacher');
